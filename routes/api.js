@@ -27,3 +27,14 @@ router.put("/api/workouts/:id", ({ params, body }, res) => {
             res.status(400).json(err);
         });
 });
+
+router.get("/api/workouts/range", (req, res) => {
+    Workout.find({})
+        .limit(7)
+        .then((dbWorkout) => {
+            res.json(dbWorkout);
+        })
+        .catch((err) => {
+            res.json(err);
+        });
+});
