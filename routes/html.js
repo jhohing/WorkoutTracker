@@ -1,4 +1,4 @@
-var path = require("path");
+const path = require("path");
 
 module.exports = function(app) {
     // Called when "Continue Workout" or "New Workout" is clicked on index.html

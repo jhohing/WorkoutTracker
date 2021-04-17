@@ -1,4 +1,4 @@
-const Workout = require("./models/workoutModel.js");
+const Workout = require("../models/workoutModel.js");
 const mongoose = require("mongoose");
 const router = require("express").Router();
 
@@ -38,3 +38,5 @@ router.get("/api/workouts/range", (req, res) => {
             res.json(err);
         });
 });
+
+module.exports = router;
