@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutTracker", { 
+let db = mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutTracker", { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -27,3 +27,5 @@ require("./routes/html.js")(app);
 app.listen(PORT, () => {
   console.log(`App running on port http://localhost:${PORT}`);
 });
+
+module.exports = db;

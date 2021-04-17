@@ -1,15 +1,15 @@
 const Workout = require("../models/workoutModel.js");
 const mongoose = require("mongoose");
-const router = require("express").Router();
 const express = require("express");
+const router = express.Router();
 
 router.post("/api/workouts", ({ body }, res) => {
     Workout.create({})
         .then((dbWorkout) => {
             res.json(dbWorkout);
         })
-        .catch(err => {
-            res.status(400).json(err);
+        .catch(({ message }) => {
+            console.log(message);
         });
 });
 
