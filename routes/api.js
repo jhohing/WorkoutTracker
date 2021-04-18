@@ -1,5 +1,4 @@
 const Workout = require("../models/workoutModel.js");
-const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
@@ -16,7 +15,7 @@ router.post("/api/workouts", ({ body }, res) => {
 router.put("/api/workouts/:id", ({ params, body }, res) => {
     console.log("Params", body, params);
     
-    Workout.findOneAndUpdate(
+    Workout.findByIdAndUpdate(
         { _id: params.id },
         { $push: { exercise: body } },
         { new: true }
@@ -48,6 +47,16 @@ router.get("/api/workouts", (req, res) => {
       .catch((err) => {
         res.json(err);
       });
+  });
+
+  router.post("/api/workouts/range", function (req, res) {
+    Workout.create(req.body)
+      .then(dbWorkout => {
+        res.json(dbWorkout)
+      })
+      .catch(err => {
+        res.json(err)
+      })
   });
 
 module.exports = router;
